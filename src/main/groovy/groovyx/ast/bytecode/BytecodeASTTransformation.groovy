@@ -217,7 +217,6 @@ class BytecodeASTTransformation implements ASTTransformation, Opcodes {
                                         if (args.expressions[0] instanceof BinaryExpression && args.expressions[0].operation.text == '>>') {
                                             BinaryExpression binExpr = args.expressions[0]
                                             if (binExpr.rightExpression instanceof ClassExpression) {
-                                                //descriptor = Type.getDescriptor(args.expressions[0].rightExpression.type.typeClass)
                                                 descriptor = BytecodeHelper.getTypeDescription(args.expressions[0].rightExpression.type)
                                             } else {
                                                 throw new IllegalArgumentException("Expected a class expression on the right of '>>'")
@@ -229,7 +228,6 @@ class BytecodeASTTransformation implements ASTTransformation, Opcodes {
                                             } else if (binExpr.leftExpression instanceof PropertyExpression) {
                                                 PropertyExpression propExp = binExpr.leftExpression
                                                 if (propExp.objectExpression instanceof ClassExpression) {
-                                                    //clazz = Type.getInternalName(propExp.objectExpression.type.typeClass)
                                                     clazz = BytecodeHelper.getClassInternalName(propExp.objectExpression.type)
                                                     field = propExp.property.text
                                                 } else {
